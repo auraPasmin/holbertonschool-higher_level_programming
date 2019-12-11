@@ -11,4 +11,4 @@ elif number == 0:
     print("Last digit of {} is {} and is 0".format(number, l))
 else:
     print("Last digit of {} is {}".format(number, l), end="")
-    print("and is less than 6 and not 0")
+    print(" and is less than 6 and not 0")
