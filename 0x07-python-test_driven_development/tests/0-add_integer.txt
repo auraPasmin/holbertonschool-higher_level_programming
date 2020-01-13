@@ -1,0 +1,41 @@
+======================
+
+Using ``0-add_integer``
+-------------------
+
+This is an example text file in reStructuredText format.  First import
+``add_integer`` from the ``example`` module:
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Now use it:
+
+>>> add_integer(1, 2)
+3
+
+>>> add_integer(100, -2)
+98
+
+>>> add_integer(2)
+100
+
+>>> add_integer(100.3, -2)
+98
+
+>>> add_integer(-5)
+93
+
+>>> add_integer(4, "School")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+   
+>>> add_integer(float("test"))
+Traceback (most recent call last):
+    ...
+ValueError: could not convert string to float: 'test'
+    
+>>> add_integer(2, float("inf"))
+Traceback (most recent call last):
+    ...
+OverflowError: cannot convert float infinity to integer
