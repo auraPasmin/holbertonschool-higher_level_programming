@@ -6,7 +6,7 @@ adds two integers
 
 
 def add_integer(a, b=98):
-    """This function returns the result of an addition between two
+    """This function returns the result of  addition between two
     integers or error if the parameters are not integers or float
     """
 
