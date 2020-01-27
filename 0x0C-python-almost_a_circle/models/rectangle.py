@@ -70,18 +70,3 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
-
-    def area(self):
-        """area"""
-        return self.__width * self.__height
-
-    def display(self):
-        """print"""
-        for y in range(self.__y):
-            print()
-        for i in range(self.__height):
-            for x in range(self.__x):
-                print(" ", end="")
-            for j in range(self.__width):
-                print("#", end="")
-            print()    
