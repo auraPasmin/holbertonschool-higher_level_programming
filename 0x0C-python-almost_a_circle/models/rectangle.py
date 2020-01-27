@@ -93,6 +93,7 @@ class Rectangle(Base):
         )
 
     def update(self, *args, **kwargs):
+        """ update """
         for i, j in enumerate(args):
             if i == 0:
                 self.id = j
