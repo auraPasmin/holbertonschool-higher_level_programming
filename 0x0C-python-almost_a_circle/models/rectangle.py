@@ -2,6 +2,7 @@
 """ rectangle class """
 from models.base import Base
 
+
 class Rectangle(Base):
     """initializer builder"""
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -9,8 +10,8 @@ class Rectangle(Base):
         self.__width = width
         self.__height = height
         self.__x = x
-        self.__y = y 
-    
+        self.__y = y
+
     @property
     def width(self):
         """Getter and Setter"""
