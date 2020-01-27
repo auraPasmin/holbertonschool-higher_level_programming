@@ -25,18 +25,39 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """function"""
-        file = cls.__name__+".json"
-        list = []
+        """writes the JSON string representation of list_objs to a file"""
+        file = cls.__name__ + ".json"
+        empty = []
         if list_objs:
             for i in list_objs:
-                list.append(cls.to_dictionary(i))
-        with open(file, "w") as f:
-            f.write(cls.to_json_string(list))
+                empty.append(cls.to_dictionary(i))
+        with open(file, "w") as w:
+            w.write(cls.to_json_string(empty))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """returns an instance with all attributes already set"""
+        if cls.__name__ is "Rectangle":
+            from models.rectangle import Rectangle
+            obj = Rectangle(1, 1)
+        elif cls.__name__ is "Square":
+            from models.square import Square
+            obj = Square(1)
+        obj.update(**dictionary)
+        return obj
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances"""
+        file = cls.__name__ + ".json"
+        if not path.isfile(file):
+            return []
+        with open(file, "r", encoding="utf-8") as f:
+            return [cls.create(**d) for d in cls.from_json_string(f.read())]
 
     @staticmethod
     def from_json_string(json_string):
-        """the json to string"""
-        if json_string is None:
+        """returns the list of the JSON string representation json_string"""
+        if json_string is None or len(json_string) == 0:
             return []
         return json.loads(json_string)
