@@ -20,7 +20,7 @@ class Base:
     def to_json_string(list_dictionaries):
         """representation of list_dictionaries:"""
         if list_dictionaries is None:
-            list_dictionaries = []
+            return []
         return json.dumps(list_dictionaries)
 
     @classmethod
