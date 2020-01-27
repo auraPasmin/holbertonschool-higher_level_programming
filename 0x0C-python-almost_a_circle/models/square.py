@@ -26,3 +26,32 @@ class Square(Rectangle):
         """should print, and str() should return"""
         return("[Square] ({}) {}/{} - {}".format
                (self.id, self.x, self.y, self.width))
+
+    def update(self, *args, **kwargs):
+        """ the update test"""
+        for i, j in enumerate(args):
+            if i == 0:
+                self.id = j
+            elif i == 1:
+                self.size = j
+            elif i == 2:
+                self.x = j
+            elif i == 3:
+                self.y = j
+        if "id" in kwargs:
+            self.id = kwargs["id"]
+        if "size" in kwargs:
+            self.size = kwargs["size"]
+        if "x" in kwargs:
+            self.x = kwargs["x"]
+        if "y" in kwargs:
+            self.y = kwargs["y"]
+
+    def to_dictionary(self):
+        """ dic test"""
+        dic = {}
+        dic["id"] = self.id
+        dic["size"] = self.size
+        dic["x"] = self.x
+        dic["y"] = self.y
+        return dic
