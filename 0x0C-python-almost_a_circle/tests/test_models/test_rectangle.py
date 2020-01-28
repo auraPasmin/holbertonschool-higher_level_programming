@@ -16,3 +16,7 @@ class RectangleTest(unittest.TestCase):
         """Test 0 for rectangle"""
         Rect = Rectangle(1, 2)
         self.assertEqual(isinstance(Rect, Base), True)
+
+
+if __name__ == "__main__":
+    unittest.main()
