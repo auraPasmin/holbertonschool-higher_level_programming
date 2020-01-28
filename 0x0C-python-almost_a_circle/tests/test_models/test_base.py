@@ -12,7 +12,22 @@ import unittest
 
 class TestBase(unittest.TestCase):
     """Simple pep8 testing"""
+
+    def setUp(self):
+        """test2"""
+        Base._Base_nb_objects = 0
+
+    def test_0(self):
+        """Test 0 """
+        base0 = Base()
+        base1 = Base()
+        base2 = Base()
+        self.assertEqual(base0.id, 1)
+        self.assertEqual(base1.id, 2)
+        self.assertEqual(base2.id, 3)
+
     def test_pep8(self):
+        """testpep8"""
         msg = "Found code style errors (and warning)."
         style = pep8.StyleGuide(quiet=True)
         fileRectangle = "models/rectangle.py"
