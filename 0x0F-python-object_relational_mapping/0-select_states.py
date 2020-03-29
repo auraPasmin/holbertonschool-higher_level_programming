@@ -11,18 +11,18 @@ if __name__ == '__main__':
     database = sys.argv[3]
 
     # connect to database
-    ct_db = MySQLdb.connect(
+    db = MySQLdb.connect(
             host="localhost",
             user=username,
             passwd=password,
-            ct_db=database,
+            db=database,
             port=3306
     )
 
-    cursor = ct_db.cursor()
+    cursor = db.cursor()
     cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
     records = cursor.fetchall()
     for row in records:
         print(row)
     cursor.close()
-    ct_db.close()
+    db.close()
