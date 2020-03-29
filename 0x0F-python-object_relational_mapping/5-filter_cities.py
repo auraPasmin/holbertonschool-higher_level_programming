@@ -22,9 +22,9 @@ if __name__ == "__main__":
     cursor = ct_db.cursor()
     search_name = "SELECT cities.name\
                 FROM cities\
-                LEFT JOIN states\
-                AND states.name = %s\
+                INNER JOIN states\
                 ON cities.state_id = states.id\
+                AND states.name = %s\
                 ORDER BY cities.id ASC"
 
     cursor.execute(search_name, (name_inp,))
