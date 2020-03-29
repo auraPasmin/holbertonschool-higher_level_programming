@@ -15,7 +15,8 @@ if __name__ == "__main__":
         port=3306,
         user=argv[1],
         passwd=argv[2],
-        db=argv[3])
+        db=argv[3],
+        name_inp=argv[4])
 
     """Create cursor to exec queries using SQL."""
     cursor = ct_db.cursor()
