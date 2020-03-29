@@ -4,25 +4,26 @@ Write a script that takes in the name of a state as
 ian argument and lists all cities o that state, using the database
 """
 
+import sys
 import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
-
+    name_inp = sys.argv[4]
     """Connect to database."""
     ct_db = MySQLdb.connect(
         host="localhost",
         port=3306,
         user=argv[1],
         passwd=argv[2],
-        db=argv[3],
-        name_inp=argv[4])
+        db=argv[3],)
 
     """Create cursor to exec queries using SQL."""
     cursor = ct_db.cursor()
     search_name = "SELECT cities.name\
                 FROM cities\
                 LEFT JOIN states\
+                AND states.name = %s\
                 ON cities.state_id = states.id\
                 ORDER BY cities.id ASC"
 
