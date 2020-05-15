@@ -1,1 +1,1 @@
-#!/usr/bin/node
+$('div#red_header').click(() => $('HEADER').css('color', '#FF0000'));

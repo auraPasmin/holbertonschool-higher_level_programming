@@ -1,1 +1,1 @@
-#!/usr/bin/node
+$('div#red_header').click(() => $('HEADER').addClass('red'));
