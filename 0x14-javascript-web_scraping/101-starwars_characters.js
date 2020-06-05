@@ -3,19 +3,24 @@
   characters of a Star Wars movie:
 */
 const request = require('request');
-const url = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
-request(url, function (error, response, body) {
-  if (error) {
-    console.log(error);
+
+request(`http://swapi-api.hbtn.io/api/films/${process.argv[2]}`, (err, res, body) => {
+  if (err) {
+    console.log(err);
   } else {
-    JSON.parse(body).characters.forEach(element => {
-      request(element, function (err, res, bod) {
-        if (err) {
-          console.log(error);
-        } else {
-          console.log(JSON.parse(bod).name);
-        }
-      });
-    });
+    const characters = JSON.parse(body).characters;
+    order(characters, 0);
   }
 });
+
+function order (characters, i) {
+  if (i === characters.length) { return; }
+  request(characters[i], (err, res, body) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(JSON.parse(body).name);
+      order(characters, i + 1);
+    }
+  });
+}
