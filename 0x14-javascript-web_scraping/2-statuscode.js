@@ -1,12 +1,8 @@
 #!/usr/bin/node
 /*
-   string to write
+  Status code
 */
 const request = require('request');
-request(process.argv[2], function (error, Response) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('code: ' + Response.statusCode);
-  }
+request.get(process.argv[2]).on('response', function (response) {
+  console.log('code: ' + response.statusCode);
 });
